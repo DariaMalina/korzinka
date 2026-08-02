@@ -1,26 +1,28 @@
 import { z } from 'zod';
 
 export const productCategorySchema = z.enum([
-  'vegetables',
-  'fruits',
-  'dairy',
+  'ready-meals',
+  'produce',
+  'dairy-eggs',
+  'meat-fish',
+  'new-products',
+  'deli',
   'bakery',
-  'drinks',
+  'grocery',
+  'cakes',
+  'confectionery',
+  'frozen',
+  'water-drinks',
+  'chilled-drinks',
+  'tea-coffee',
+  'snacks',
 ]);
 
-export const productAccentSchema = z.enum([
-  'tomato',
-  'avocado',
-  'banana',
-  'milk',
-  'pastry',
-  'berry',
-  'bread',
-  'orange',
-  'juice',
-  'cucumber',
-  'kombucha',
-  'yogurt',
+export const productImagePositionSchema = z.enum([
+  'top-left',
+  'top-right',
+  'bottom-left',
+  'bottom-right',
 ]);
 
 export const productSchema = z.object({
@@ -33,8 +35,10 @@ export const productSchema = z.object({
   oldPriceKopecks: z.number().int().positive().nullable(),
   unit: z.string().min(1),
   badge: z.string().min(1).nullable(),
-  emoji: z.string().min(1),
-  accent: productAccentSchema,
+  image: z.object({
+    src: z.string().min(1),
+    position: productImagePositionSchema,
+  }),
 });
 
 export const productListResponseSchema = z.object({
@@ -43,4 +47,5 @@ export const productListResponseSchema = z.object({
 
 export type Product = z.infer<typeof productSchema>;
 export type ProductCategory = z.infer<typeof productCategorySchema>;
+export type ProductImagePosition = z.infer<typeof productImagePositionSchema>;
 export type ProductListResponse = z.infer<typeof productListResponseSchema>;

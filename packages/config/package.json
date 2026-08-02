@@ -2,7 +2,9 @@
   "name": "@korzinka/config",
   "private": true,
   "version": "0.1.0",
-  "files": ["tsconfig.json"],
+  "files": [
+    "tsconfig.json"
+  ],
   "exports": {
     "./tsconfig": "./tsconfig.json"
   }

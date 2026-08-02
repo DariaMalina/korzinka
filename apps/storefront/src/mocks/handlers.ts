@@ -6,7 +6,9 @@ export const handlers = [
     await delay(180);
 
     const url = new URL(request.url);
-    const query = (url.searchParams.get('q') ?? '').trim().toLocaleLowerCase('ru');
+    const query = (url.searchParams.get('q') ?? '')
+      .trim()
+      .toLocaleLowerCase('ru');
     const category = productCategorySchema.safeParse(
       url.searchParams.get('category'),
     );

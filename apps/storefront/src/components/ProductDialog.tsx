@@ -1,5 +1,5 @@
 import type { Product } from '@korzinka/contracts';
-import { Button, Dialog, formatMoney } from '@korzinka/ui';
+import { Button, Dialog, formatMoney, ProductImage } from '@korzinka/ui';
 
 type ProductDialogProps = {
   onChangeQuantity: (productId: string, delta: number) => void;
@@ -31,18 +31,19 @@ export function ProductDialog({
           >
             ×
           </button>
-          <div
-            aria-hidden="true"
-            className={`product-dialog__visual ui-product-card__image--${product.accent}`}
-          >
-            {product.badge ? <span>{product.badge}</span> : null}
-            <b>{product.emoji}</b>
+          <div className="product-dialog__visual">
+            {product.badge ? (
+              <span className="product-dialog__badge">{product.badge}</span>
+            ) : null}
+            <ProductImage product={product} />
           </div>
           <div className="product-dialog__content">
             <span className="section-kicker">{product.categoryLabel}</span>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <span className="product-dialog__unit">Упаковка: {product.unit}</span>
+            <span className="product-dialog__unit">
+              Упаковка: {product.unit}
+            </span>
             <div className="product-dialog__price">
               <strong>{formatMoney(product.priceKopecks)}</strong>
               {product.oldPriceKopecks ? (
@@ -50,10 +51,7 @@ export function ProductDialog({
               ) : null}
             </div>
             {quantity === 0 ? (
-              <Button
-                onClick={() => onChangeQuantity(product.id, 1)}
-                size="lg"
-              >
+              <Button onClick={() => onChangeQuantity(product.id, 1)} size="lg">
                 Добавить в корзинку
               </Button>
             ) : (

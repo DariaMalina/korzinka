@@ -120,6 +120,23 @@
   font: 500 16px/1 var(--font-sans);
 }
 
+.ui-search-field__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.ui-search-field__icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
 .ui-search-field button {
   width: 30px;
   height: 30px;
@@ -163,60 +180,48 @@
   aspect-ratio: 1.25;
   margin: 8px;
   overflow: hidden;
+  background: #f3f2ef;
   border: 0;
   border-radius: 22px;
   cursor: pointer;
 }
 
-.ui-product-card__image::after {
+.ui-product-image {
+  display: block;
+  background-image: var(--product-atlas);
+  background-repeat: no-repeat;
+  background-size: 200% auto;
+}
+
+.ui-product-image--top-left {
+  background-position: 0 0;
+}
+
+.ui-product-image--top-right {
+  background-position: 100% 0;
+}
+
+.ui-product-image--bottom-left {
+  background-position: 0 100%;
+}
+
+.ui-product-image--bottom-right {
+  background-position: 100% 100%;
+}
+
+.ui-product-card__photo {
   position: absolute;
-  inset: auto -10% -42% 28%;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: auto;
   aspect-ratio: 1;
-  content: '';
-  background: rgb(255 255 255 / 46%);
-  border-radius: 50%;
-}
-
-.ui-product-card__image--tomato,
-.ui-product-card__image--berry {
-  background: linear-gradient(145deg, #ffe0d7, #fff4ed);
-}
-
-.ui-product-card__image--avocado,
-.ui-product-card__image--cucumber {
-  background: linear-gradient(145deg, #d9efb8, #eff8d9);
-}
-
-.ui-product-card__image--banana,
-.ui-product-card__image--pastry,
-.ui-product-card__image--bread {
-  background: linear-gradient(145deg, #ffedb7, #fff8df);
-}
-
-.ui-product-card__image--milk,
-.ui-product-card__image--yogurt {
-  background: linear-gradient(145deg, #e0eefe, #f5f8ff);
-}
-
-.ui-product-card__image--orange,
-.ui-product-card__image--juice {
-  background: linear-gradient(145deg, #ffddb4, #fff0d7);
-}
-
-.ui-product-card__image--kombucha {
-  background: linear-gradient(145deg, #f1d9f7, #fff1fa);
-}
-
-.ui-product-card__emoji {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(72px, 10vw, 128px);
-  filter: drop-shadow(0 18px 18px rgb(31 49 34 / 16%));
+  transform: translateX(-50%);
   transition: transform var(--transition-base);
 }
 
-.ui-product-card__image:hover .ui-product-card__emoji {
-  transform: translateY(-4px) rotate(-3deg) scale(1.03);
+.ui-product-card__image:hover .ui-product-card__photo {
+  transform: translateX(-50%) scale(1.035);
 }
 
 .ui-product-card__badge {

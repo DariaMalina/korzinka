@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  type MouseEvent,
-  type ReactNode,
-} from 'react';
+import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 
 export type DialogProps = {
   children: ReactNode;

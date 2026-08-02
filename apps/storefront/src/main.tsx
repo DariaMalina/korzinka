@@ -8,7 +8,8 @@ import { App } from './app/App';
 import './app/App.css';
 
 async function enableMocking() {
-  if (!import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'false') return;
+  if (!import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'false')
+    return;
 
   const { worker } = await import('./mocks/browser');
   await worker.start({ onUnhandledRequest: 'bypass' });

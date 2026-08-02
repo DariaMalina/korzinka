@@ -1,8 +1,4 @@
-import {
-  forwardRef,
-  type ButtonHTMLAttributes,
-  type ReactNode,
-} from 'react';
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -37,7 +33,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span aria-label="Загрузка" className="ui-button__spinner" role="status" />
+          <span
+            aria-label="Загрузка"
+            className="ui-button__spinner"
+            role="status"
+          />
         ) : null}
         <span className={isLoading ? 'ui-button__label--loading' : ''}>
           {children}

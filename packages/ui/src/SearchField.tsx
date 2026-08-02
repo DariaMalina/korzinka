@@ -23,7 +23,10 @@ export function SearchField({
         {label}
       </label>
       <span aria-hidden="true" className="ui-search-field__icon">
-        ⌕
+        <svg viewBox="0 0 24 24">
+          <circle cx="10.75" cy="10.75" r="6.25" />
+          <path d="m15.5 15.5 4 4" />
+        </svg>
       </span>
       <input
         id={inputId}

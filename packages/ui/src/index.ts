@@ -5,5 +5,7 @@ export type { DialogProps } from './Dialog';
 export { formatMoney } from './formatMoney';
 export { ProductCard } from './ProductCard';
 export type { ProductCardProps } from './ProductCard';
+export { ProductImage } from './ProductImage';
+export type { ProductImageProps } from './ProductImage';
 export { SearchField } from './SearchField';
 export type { SearchFieldProps } from './SearchField';

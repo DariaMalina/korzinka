@@ -1,5 +1,5 @@
 import type { Product } from '@korzinka/contracts';
-import { Button, Dialog, formatMoney } from '@korzinka/ui';
+import { Button, Dialog, formatMoney, ProductImage } from '@korzinka/ui';
 
 import {
   FREE_DELIVERY_THRESHOLD,
@@ -53,18 +53,16 @@ function CartLine({
 }) {
   return (
     <li className="cart-line">
-      <span
-        aria-hidden="true"
-        className={`cart-line__visual ui-product-card__image--${product.accent}`}
-      >
-        {product.emoji}
-      </span>
+      <ProductImage className="cart-line__visual" product={product} />
       <div className="cart-line__info">
         <strong>{product.name}</strong>
         <span>{product.unit}</span>
         <b>{formatMoney(product.priceKopecks * quantity)}</b>
       </div>
-      <div aria-label={`Количество ${product.name}`} className="cart-line__quantity">
+      <div
+        aria-label={`Количество ${product.name}`}
+        className="cart-line__quantity"
+      >
         <button
           aria-label={`Убрать один ${product.name}`}
           onClick={() => onChangeQuantity(product.id, -1)}
@@ -105,7 +103,12 @@ export function CartDialog({
   );
 
   return (
-    <Dialog className="cart-dialog" label="Корзина" onClose={onClose} open={open}>
+    <Dialog
+      className="cart-dialog"
+      label="Корзина"
+      onClose={onClose}
+      open={open}
+    >
       <div className="cart-dialog__header">
         <div>
           <span className="section-kicker">Ваш заказ</span>

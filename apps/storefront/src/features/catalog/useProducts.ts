@@ -18,8 +18,11 @@ export function useProducts(category: ProductCategory | 'all', query: string) {
       void fetchProducts({ category, query }, controller.signal)
         .then(setProducts)
         .catch((reason: unknown) => {
-          if (reason instanceof DOMException && reason.name === 'AbortError') return;
-          setError(reason instanceof Error ? reason.message : 'Произошла ошибка');
+          if (reason instanceof DOMException && reason.name === 'AbortError')
+            return;
+          setError(
+            reason instanceof Error ? reason.message : 'Произошла ошибка',
+          );
         })
         .finally(() => setIsLoading(false));
     }, 250);

@@ -1,64 +1,55 @@
 import type { Product, ProductCategory } from '@korzinka/contracts';
-import { Button, ProductCard, SearchField } from '@korzinka/ui';
-import { useState } from 'react';
+import { Button, ProductCard } from '@korzinka/ui';
 
+import { catalogCategories } from '../features/catalog/categories';
 import { useProducts } from '../features/catalog/useProducts';
 
-const categories: Array<{
-  icon: string;
-  id: ProductCategory | 'all';
-  label: string;
-}> = [
-  { icon: '✦', id: 'all', label: 'Все' },
-  { icon: '🥬', id: 'vegetables', label: 'Овощи' },
-  { icon: '🍊', id: 'fruits', label: 'Фрукты' },
-  { icon: '🥛', id: 'dairy', label: 'Молочное' },
-  { icon: '🥐', id: 'bakery', label: 'Выпечка' },
-  { icon: '🧃', id: 'drinks', label: 'Напитки' },
-];
-
 type CatalogProps = {
+  category: ProductCategory | 'all';
   cart: Record<string, number>;
+  onCategoryChange: (category: ProductCategory | 'all') => void;
   onChangeQuantity: (productId: string, delta: number) => void;
   onOpenProduct: (product: Product) => void;
+  onQueryChange: (query: string) => void;
+  query: string;
 };
 
 export function Catalog({
+  category,
   cart,
+  onCategoryChange,
   onChangeQuantity,
   onOpenProduct,
+  onQueryChange,
+  query,
 }: CatalogProps) {
-  const [category, setCategory] = useState<ProductCategory | 'all'>('all');
-  const [query, setQuery] = useState('');
   const { error, isLoading, products, reload } = useProducts(category, query);
 
   return (
     <section className="catalog shell" id="catalog">
       <div className="catalog__heading">
         <div>
-          <span className="section-kicker">Всё нужное рядом</span>
-          <h2>Что положим в корзинку?</h2>
+          <span className="section-kicker">
+            {query.trim() ? 'Результаты поиска' : 'Всё нужное рядом'}
+          </span>
+          <h2>
+            {query.trim()
+              ? `По запросу «${query.trim()}»`
+              : 'Что положим в корзинку?'}
+          </h2>
         </div>
-        <SearchField
-          label="Поиск по каталогу"
-          onChange={(event) => setQuery(event.target.value)}
-          onClear={() => setQuery('')}
-          placeholder="Найти любимое"
-          value={query}
-        />
       </div>
 
       <div aria-label="Категории товаров" className="category-list" role="list">
-        {categories.map((item) => (
+        {catalogCategories.map((item) => (
           <button
             aria-pressed={category === item.id}
             className={category === item.id ? 'is-active' : ''}
             key={item.id}
-            onClick={() => setCategory(item.id)}
+            onClick={() => onCategoryChange(item.id)}
             role="listitem"
             type="button"
           >
-            <span aria-hidden="true">{item.icon}</span>
             {item.label}
           </button>
         ))}
@@ -87,8 +78,8 @@ export function Catalog({
           <p>Проверьте запрос или выберите другую категорию.</p>
           <Button
             onClick={() => {
-              setQuery('');
-              setCategory('all');
+              onQueryChange('');
+              onCategoryChange('all');
             }}
             variant="secondary"
           >

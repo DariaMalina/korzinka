@@ -1,6 +1,7 @@
 import type { Product } from '@korzinka/contracts';
 
 import { formatMoney } from './formatMoney';
+import { ProductImage } from './ProductImage';
 
 export type ProductCardProps = {
   onAdd: () => void;
@@ -23,16 +24,14 @@ export function ProductCard({
     <article className="ui-product-card">
       <button
         aria-label={`Подробнее: ${product.name}`}
-        className={`ui-product-card__image ui-product-card__image--${product.accent}`}
+        className="ui-product-card__image"
         onClick={onOpen}
         type="button"
       >
         {product.badge ? (
           <span className="ui-product-card__badge">{product.badge}</span>
         ) : null}
-        <span aria-hidden="true" className="ui-product-card__emoji">
-          {product.emoji}
-        </span>
+        <ProductImage className="ui-product-card__photo" product={product} />
       </button>
       <div className="ui-product-card__content">
         <div className="ui-product-card__price">
@@ -41,12 +40,20 @@ export function ProductCard({
             <del>{formatMoney(product.oldPriceKopecks)}</del>
           ) : null}
         </div>
-        <button className="ui-product-card__name" onClick={onOpen} type="button">
+        <button
+          className="ui-product-card__name"
+          onClick={onOpen}
+          type="button"
+        >
           {product.name}
         </button>
         <span className="ui-product-card__unit">{product.unit}</span>
         {quantity === 0 ? (
-          <button className="ui-product-card__add" onClick={onAdd} type="button">
+          <button
+            className="ui-product-card__add"
+            onClick={onAdd}
+            type="button"
+          >
             <span>В корзинку</span>
             <span aria-hidden="true">+</span>
           </button>
