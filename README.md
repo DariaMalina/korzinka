@@ -19,3 +19,35 @@
 **Scope MVP**
 
 В MVP входят авторизация, адреса и зоны доставки, каталог, поиск, карточка товара, корзина, замены, checkout, отслеживание заказа, история и служба поддержки.
+
+**Локальный запуск**
+
+Требования: Node.js 20.19+ и npm 10+.
+
+```bash
+cp .env.example .env
+npm install
+npm run dev
+```
+
+Storefront: `http://localhost:5173`  
+API: `http://localhost:3001`  
+Storybook: `npm run storybook`
+
+**Команды**
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+npm run check
+```
+
+**Структура**
+
+- `apps/storefront` — React-клиент;
+- `apps/api` — Node.js BFF;
+- `packages/ui` — библиотека компонентов;
+- `packages/contracts` — схемы, типы и воспроизводимые fixtures;
+- `packages/config` — общая конфигурация TypeScript.

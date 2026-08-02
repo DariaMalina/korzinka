@@ -1,0 +1,42 @@
+{
+  "name": "korzinka",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n storefront,api -c green,magenta \"npm run dev -w @korzinka/storefront\" \"npm run dev -w @korzinka/api\"",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "storybook": "npm run storybook -w @korzinka/ui",
+    "build:storybook": "npm run build:storybook -w @korzinka/ui",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "20.19.37",
+    "concurrently": "10.0.4",
+    "eslint": "10.8.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "globals": "17.8.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.65.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "apps/storefront/public"
+    ]
+  }
+}
