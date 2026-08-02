@@ -8,7 +8,11 @@
 
 **Управление**
 
-[Backlog](https://github.com/DariaMalina/korzinka/blob/main/zapas-backlog-v0.1.md)
+[GitHub Project](https://github.com/users/DariaMalina/projects/2)
+
+[Issues](https://github.com/DariaMalina/korzinka/issues)
+
+[Wiki](https://github.com/DariaMalina/korzinka/wiki)
 
 [Linear project](https://linear.app/dariamalinawork/project/zapas-mvp-10-b9f0e574a859)
 
