@@ -1,0 +1,336 @@
+.ui-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ui-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-pill);
+  font: 700 15px/1 var(--font-sans);
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.ui-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.ui-button:focus-visible,
+.ui-search-field:focus-within,
+.ui-product-card button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-focus) 70%, transparent);
+  outline-offset: 3px;
+}
+
+.ui-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.ui-button--primary {
+  color: #fff;
+  background: var(--color-brand);
+}
+
+.ui-button--primary:hover:not(:disabled) {
+  background: var(--color-brand-strong);
+}
+
+.ui-button--secondary {
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+
+.ui-button--ghost {
+  color: var(--color-ink);
+  background: transparent;
+}
+
+.ui-button--sm {
+  min-height: 36px;
+  padding: 0 16px;
+}
+
+.ui-button--md {
+  min-height: 44px;
+  padding: 0 22px;
+}
+
+.ui-button--lg {
+  min-height: 54px;
+  padding: 0 29px;
+  font-size: 17px;
+}
+
+.ui-button__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ui-spin 800ms linear infinite;
+}
+
+.ui-button__label--loading {
+  opacity: 0.75;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.ui-search-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 52px;
+  padding: 0 14px;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 28px rgb(39 62 43 / 6%);
+}
+
+.ui-search-field input {
+  width: 100%;
+  min-width: 0;
+  color: var(--color-ink);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: 500 16px/1 var(--font-sans);
+}
+
+.ui-search-field__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.ui-search-field__icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.ui-search-field button {
+  width: 30px;
+  height: 30px;
+  color: var(--color-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ui-dialog {
+  width: min(920px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  overflow: auto;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-overlay);
+}
+
+.ui-dialog::backdrop {
+  background: rgb(17 24 19 / 62%);
+  backdrop-filter: blur(7px);
+}
+
+.ui-product-card {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 28px;
+  box-shadow: 0 12px 38px rgb(26 53 31 / 7%);
+}
+
+.ui-product-card__image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(100% - 16px);
+  aspect-ratio: 1.25;
+  margin: 8px;
+  overflow: hidden;
+  background: #f3f2ef;
+  border: 0;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.ui-product-image {
+  display: block;
+  background-image: var(--product-atlas);
+  background-repeat: no-repeat;
+  background-size: 200% auto;
+}
+
+.ui-product-image--top-left {
+  background-position: 0 0;
+}
+
+.ui-product-image--top-right {
+  background-position: 100% 0;
+}
+
+.ui-product-image--bottom-left {
+  background-position: 0 100%;
+}
+
+.ui-product-image--bottom-right {
+  background-position: 100% 100%;
+}
+
+.ui-product-card__photo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: auto;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  transition: transform var(--transition-base);
+}
+
+.ui-product-card__image:hover .ui-product-card__photo {
+  transform: translateX(-50%) scale(1.035);
+}
+
+.ui-product-card__badge {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  left: 14px;
+  padding: 8px 11px;
+  color: #fff;
+  background: var(--color-brand);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ui-product-card__content {
+  padding: 12px 20px 20px;
+}
+
+.ui-product-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.ui-product-card__price strong {
+  font-size: 25px;
+}
+
+.ui-product-card__price del {
+  color: #8d958f;
+  font-size: 14px;
+}
+
+.ui-product-card__name {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 0 4px;
+  color: var(--color-ink);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 760;
+}
+
+.ui-product-card__unit {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.ui-product-card__add,
+.ui-product-card__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 0 14px;
+  color: #fff;
+  background: var(--color-brand);
+  border: 0;
+  border-radius: 14px;
+}
+
+.ui-product-card__add {
+  cursor: pointer;
+  font-weight: 780;
+}
+
+.ui-product-card__quantity button {
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  background: rgb(255 255 255 / 14%);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@media (max-width: 780px) {
+  .ui-product-card {
+    border-radius: 20px;
+  }
+
+  .ui-product-card__image {
+    width: calc(100% - 12px);
+    margin: 6px;
+    border-radius: 15px;
+  }
+
+  .ui-product-card__content {
+    padding: 6px 12px 13px;
+  }
+
+  .ui-product-card__emoji {
+    font-size: clamp(58px, 20vw, 90px);
+  }
+
+  .ui-product-card__name {
+    min-height: 42px;
+    font-size: 14px;
+  }
+
+  .ui-product-card__price strong {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  --color-ink: #172019;
+  --color-muted: #667068;
+  --color-canvas: #f1f8f1;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fbf7;
+  --color-line: #dfe8df;
+  --color-brand: #2c7f31;
+  --color-brand-strong: #1f6425;
+  --color-hero: #ed3832;
+  --color-accent: #f17024;
+  --color-delivery: #ffd84d;
+  --color-focus: #6c50d8;
+  --color-warning: #d54b2a;
+  --shadow-card: 0 18px 60px rgb(35 55 39 / 10%);
+  --shadow-overlay: 0 24px 90px rgb(20 28 22 / 26%);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --font-sans:
+    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --transition-fast: 150ms ease;
+  --transition-base: 240ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
