@@ -3,3 +3,4 @@ dist
 storybook-static
 coverage
 package-lock.json
+apps/storefront/public/mockServiceWorker.js
