@@ -9,8 +9,8 @@ export function BrandLogo({
 }: BrandLogoProps) {
   const source =
     variant === 'light'
-      ? '/brand/korzinka-logo-light.svg'
-      : '/brand/korzinka-logo.svg';
+      ? `${import.meta.env.BASE_URL}brand/korzinka-logo-light.svg`
+      : `${import.meta.env.BASE_URL}brand/korzinka-logo.svg`;
 
   return (
     <img

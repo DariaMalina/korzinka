@@ -37,7 +37,7 @@ function defineCategory(
     unit: product.unit,
     badge: product.badge ?? null,
     image: {
-      src: product.atlas ?? atlas,
+      src: (product.atlas ?? atlas).replace(/^\//, ''),
       position: imagePositions[index % imagePositions.length]!,
     },
   }));

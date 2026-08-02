@@ -35,6 +35,8 @@ export function CategoryShowcase({
   activeCategory,
   onSelect,
 }: CategoryShowcaseProps) {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section aria-labelledby="showcase-title" className="category-showcase">
       <h1 id="showcase-title">Очень вкусные продукты</h1>
@@ -48,7 +50,7 @@ export function CategoryShowcase({
             style={
               {
                 '--category-tone': categoryTones[index],
-                '--category-photo': `url('/catalog/categories/${category.id}.png')`,
+                '--category-photo': `url('${baseUrl}catalog/categories/${category.id}.png')`,
               } as CSSProperties
             }
             type="button"
